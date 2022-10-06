@@ -2,8 +2,18 @@
 import { ref } from "vue";
 
 const input = ref('');
+const emit = defineEmits(['sendMessage']);
+const update = (value) => {
+  const messageObj = {
+    displayName: "自分さん",
+    uid: "jibun",
+    message: value,
+  }
+  emit('sendMessage', messageObj)
+}
 const doSend = () => {
   if (input.value === '') return;
+  update(input.value); // 追加
   input.value = '';
 }
 </script>

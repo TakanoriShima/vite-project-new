@@ -9,8 +9,13 @@ const props = defineProps({
 </script>
 <template>
   <div class="kaiwa line" ref="scrollWindow">
-    <section v-for="chat in props.data.chat" :key="chat" class="item">
-      <div>
+    <section v-for="chat in data.chat" :key="chat" class="item">
+      <div v-if="chat.uid === data.user.uid">
+        <div class="fukidasi right">
+          {{ chat.message }}
+        </div>
+      </div>
+      <div v-else>
         <div class="name">
           {{ chat.displayName }}
         </div>

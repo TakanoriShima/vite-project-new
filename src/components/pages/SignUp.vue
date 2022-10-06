@@ -1,6 +1,17 @@
 <script setup>
 import Email from '../input/Email.vue'
 import Password from '../input/Password.vue' // 追加
+import { reactive } from '@vue/reactivity'
+
+const data = reactive({
+  email: "",
+  password: "",
+  passwordReinput: "",
+});
+
+const signUp = () => {
+  console.log(data)
+}
 </script>
 
 <template>
@@ -13,12 +24,13 @@ import Password from '../input/Password.vue' // 追加
               <div class="card-body p-5 text-center bg-light">
 
                 <h3 class="mb-5">Sign Up</h3>
+                <!-- v-modelでデータをバインドするときはmodelValueの名前で親コンポーネントからデータを受け取ります。 -->
+                <Email id="email" title="Email" v-model="data.email" />
+                <Password id="password" title="Password(6文字)" v-model="data.password" />
+                <Password id="password-reinput" title="Password(再入力)" v-model="data.passwordReinput" />
 
-                <Email id="email" title="Email" />
-                <Password id="password" title="Password(6文字)" />
-                <Password id="password-reinput" title="Password(再入力)" />
-
-                <button class="btn btn-outline-primary btn-lg btn-block" type="submit">SignUp</button>
+                <!-- <button class="btn btn-outline-primary btn-lg btn-block" type="submit">SignUp</button> -->
+                <button class="btn btn-outline-primary btn-lg btn-block" type="submit" @click="signUp">SignUp</button>
               </div>
             </div>
           </div>

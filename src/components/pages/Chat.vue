@@ -74,8 +74,8 @@ export default defineComponent({
 </script>
 
 <template>
+  <Header />
   <div class="container">
-    <Header />
     <DisplayName v-model="data.displayName" @update="updateDisplayName" /> 
     <View :data="data" />
     <Send @sendMessage="pushMessage" />

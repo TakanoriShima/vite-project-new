@@ -6,13 +6,15 @@ import Send from '../chat/Send.vue'
 import { getDatabase, ref, push, onValue } from "firebase/database";
 import { getAuth, onAuthStateChanged, updateProfile } from "firebase/auth";
 import DisplayName from '../chat/DisplayName.vue'
+import Header from '../header/Header.vue'
 
 // TypeScript に Vue コンポーネントオブションのなかで適切に型を推論させるために、defineComponent グローバルメソッドでコンポーネントを定義する必要があります:
 export default defineComponent({
   components: {
     View,
     Send,
-    DisplayName 
+    DisplayName ,
+    Header
   },
   setup() {
     const data = reactive({
@@ -73,6 +75,7 @@ export default defineComponent({
 
 <template>
   <div class="container">
+    <Header />
     <DisplayName v-model="data.displayName" @update="updateDisplayName" /> 
     <View :data="data" />
     <Send @sendMessage="pushMessage" />

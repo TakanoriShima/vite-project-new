@@ -2,6 +2,9 @@
 import Email from '../input/Email.vue'
 import Password from '../input/Password.vue' // 追加
 import { reactive } from '@vue/reactivity'
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
+const auth = getAuth();
 
 const data = reactive({
   email: "",
@@ -10,10 +13,16 @@ const data = reactive({
 });
 
 const signUp = () => {
-  console.log(data)
+  createUserWithEmailAndPassword(auth, data.email, data.password)
+    .then((userCredential) => {
+      alert("ユーザー作成に成功しました！")
+    })
+    .catch((error) => {
+      console.log(error)
+      alert("ユーザー作成に失敗しました")
+    })
 }
 </script>
-
 <template>
   <div id="app">
     <section class="vh-100">

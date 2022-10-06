@@ -3,16 +3,19 @@ import Email from '../input/Email.vue';
 import Password from '../input/Password.vue' // 追加
 import { reactive } from '@vue/reactivity'
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { useRouter } from "vue-router"
 
 const data = reactive({
   email: '',
   password: '',
 })
 const auth = getAuth();
+const router = useRouter()
 const login = () => {
   signInWithEmailAndPassword(auth, data.email, data.password)
     .then((userCredential) => {
-      alert("ログインに成功しました！")
+      // alert("ログインに成功しました！") →　削除
+      router.push('/');
     })
     .catch((err) => {
       console.log(err)

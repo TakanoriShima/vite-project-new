@@ -1,6 +1,7 @@
 <!-- <script setup>でない点に注意 -->
 <script>
 import { defineComponent, reactive } from 'vue'
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import View from '../chat/View.vue' // 追加
 import Send from '../chat/Send.vue'
 
@@ -41,6 +42,16 @@ export default defineComponent({
       pushMessage // 追加
     }
   },
+  beforeRouteEnter: (to, from, next) => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        next();
+      } else {
+        next('/login');
+      }
+    });
+  }
 })
 </script>
 

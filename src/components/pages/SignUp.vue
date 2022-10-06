@@ -3,8 +3,7 @@ import Email from '../input/Email.vue'
 import Password from '../input/Password.vue' // 追加
 import { reactive } from '@vue/reactivity'
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-
-const auth = getAuth();
+import { useRouter } from "vue-router"
 
 const data = reactive({
   email: "",
@@ -12,10 +11,13 @@ const data = reactive({
   passwordReinput: "",
 });
 
+const router = useRouter()
+const auth = getAuth();
 const signUp = () => {
   createUserWithEmailAndPassword(auth, data.email, data.password)
     .then((userCredential) => {
-      alert("ユーザー作成に成功しました！")
+      // alert("ユーザー作成に成功しました！") → 削除
+      router.push('/')
     })
     .catch((error) => {
       console.log(error)

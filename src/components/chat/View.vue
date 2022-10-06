@@ -6,29 +6,10 @@ const props = defineProps({
   data: Object
 })
 
-const data = {
-  chat: [
-    {
-      displayName: "テスト1さん",
-      uid: "test1",
-      message: "ああああああ",
-    },
-    {
-      displayName: "テスト2さん",
-      uid: "test2",
-      message: "いいいいい",
-    },
-    {
-      displayName: "テスト3さん",
-      uid: "test3",
-      message: "ううううう",
-    },
-  ]
-}
 </script>
 <template>
   <div class="kaiwa line" ref="scrollWindow">
-    <section v-for="chat in data.chat" :key="chat" class="item">
+    <section v-for="chat in props.data.chat" :key="chat" class="item">
       <div>
         <div class="name">
           {{ chat.displayName }}

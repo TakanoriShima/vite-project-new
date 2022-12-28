@@ -1,4 +1,3 @@
-<!-- <script setup>でない点に注意 -->
 <script setup>
 import { reactive, defineComponent } from 'vue'
 import View from '../chat/View.vue' // 追加
@@ -52,18 +51,18 @@ const updateDisplayName = (name) => {
 </script>
 
 <script>
-export default defineComponent({
-  beforeRouteEnter: (to, from, next) => {
-    const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        next();
-      } else {
-        next('/login');
-      }
-    });
-  }
-})
+// export default defineComponent({
+//   beforeRouteEnter: (to, from, next) => {
+//     const auth = getAuth();
+//     onAuthStateChanged(auth, (user) => {
+//       if (user) {
+//         next();
+//       } else {
+//         next('/login');
+//       }
+//     });
+//   }
+// })
 </script>
 
 <template>

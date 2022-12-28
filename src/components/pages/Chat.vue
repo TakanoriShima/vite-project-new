@@ -8,7 +8,6 @@ import { getAuth, onAuthStateChanged, updateProfile } from "firebase/auth";
 import DisplayName from '../chat/DisplayName.vue'
 import Header from '../header/Header.vue'
 
-// TypeScript に Vue コンポーネントオブションのなかで適切に型を推論させるために、defineComponent グローバルメソッドでコンポーネントを定義する必要があります:
 export default defineComponent({
   components: {
     View,
